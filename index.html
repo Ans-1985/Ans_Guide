@@ -292,7 +292,7 @@
   }
 
   @media (max-width:900px){
-    [id]{scroll-margin-top:90px;}
+    [id]{scroll-margin-top:110px;}
     .layout{flex-direction:column; padding-top:16px;}
     nav.toc{display:none;}
     main{padding:0 16px 80px;}
@@ -1122,7 +1122,16 @@
       if(e.target === mobileMenuOverlay){ closeMobileMenu(); }
     });
     mobileMenuOverlay.querySelectorAll('.mobile-menu-list a').forEach(link => {
-      link.addEventListener('click', closeMobileMenu);
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const target = document.querySelector(targetId);
+        closeMobileMenu();
+        setTimeout(() => {
+          if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+          history.pushState(null, '', targetId);
+        }, 60);
+      });
     });
   }
   const progressBar = document.getElementById('scrollProgress');
