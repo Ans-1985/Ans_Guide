@@ -162,11 +162,17 @@
     padding:9px 16px; border-radius:22px; white-space:nowrap; display:inline-block;
     transition:background .15s ease, color .15s ease;
   }
-  .quicknav-inner > .quicknav-item > a:hover,
-  .quicknav-inner > .quicknav-item > a:focus-visible{
-    background:var(--surface-2); color:var(--ink); outline:none;
+  .quicknav-label{
+    flex-shrink:0; font-weight:600; font-size:0.86rem; cursor:default;
+    color:var(--muted); background:transparent;
+    padding:9px 16px; border-radius:22px; white-space:nowrap; display:inline-block;
+    transition:background .15s ease, color .15s ease;
   }
-  .quicknav-item.active > a{
+  .quicknav-item:hover > .quicknav-label,
+  .quicknav-item:focus-within > .quicknav-label{
+    background:var(--surface-2); color:var(--ink);
+  }
+  .quicknav-item.active > .quicknav-label{
     background:var(--primary); color:#fff;
   }
 
@@ -414,7 +420,7 @@
   <div class="quicknav-inner">
 
     <div class="quicknav-item">
-      <a href="#intro">المقدّمة</a>
+      <span class="quicknav-label">المقدّمة</span>
       <div class="quicknav-drop">
         <a href="#intro">رؤيتنا، رسالتنا، فلسفة المدرسة</a>
         <a href="#programs">البرامج التعليميّة</a>
@@ -423,7 +429,7 @@
     </div>
 
     <div class="quicknav-item">
-      <a href="#resources">الدعم والرعاية</a>
+      <span class="quicknav-label">الدعم والرعاية</span>
       <div class="quicknav-drop">
         <a href="#resources">قسم المصادر التعليميّة</a>
         <a href="#academic-guidance">الإرشاد الأكاديميّ</a>
@@ -433,7 +439,7 @@
     </div>
 
     <div class="quicknav-item">
-      <a href="#sustainability">الحياة المدرسيّة</a>
+      <span class="quicknav-label">الحياة المدرسيّة</span>
       <div class="quicknav-drop">
         <a href="#sustainability">التنمية المستدامة في المدرسة</a>
         <a href="#class-distribution">توزيع الطلبة على الشُعَب</a>
@@ -446,7 +452,7 @@
     </div>
 
     <div class="quicknav-item">
-      <a href="#homework">التعلّم والتقويم</a>
+      <span class="quicknav-label">التعلّم والتقويم</span>
       <div class="quicknav-drop">
         <a href="#homework">المهامّ البيتيّة</a>
         <a href="#assessment">التقويم</a>
@@ -455,7 +461,7 @@
     </div>
 
     <div class="quicknav-item">
-      <a href="#attendance-hours">الدوام والانضباط</a>
+      <span class="quicknav-label">الدوام والانضباط</span>
       <div class="quicknav-drop">
         <a href="#attendance-hours">الدوام وأوقات الدوام</a>
         <a href="#absence">التغيّب</a>
@@ -468,7 +474,7 @@
     </div>
 
     <div class="quicknav-item">
-      <a href="#meals">الحياة اليوميّة</a>
+      <span class="quicknav-label">الحياة اليوميّة</span>
       <div class="quicknav-drop">
         <a href="#meals">وجبات الطلبة</a>
         <a href="#cafeteria">المقصف</a>
@@ -480,7 +486,7 @@
     </div>
 
     <div class="quicknav-item">
-      <a href="#campus-access">التواصل مع الأهل</a>
+      <span class="quicknav-label">التواصل مع الأهل</span>
       <div class="quicknav-drop">
         <a href="#campus-access">دخول أولياء الأمر إلى الحرم المدرسيّ</a>
         <a href="#communication">التواصل بين المدرسة وأولياء الأمر</a>
@@ -491,7 +497,7 @@
     </div>
 
     <div class="quicknav-item">
-      <a href="#appendices">الملحقات</a>
+      <span class="quicknav-label">الملحقات</span>
       <div class="quicknav-drop">
         <a href="#appendices">قائمة الملحقات</a>
         <a href="#appendix-buses">ملحق ١: تعليمات استخدام حافلات المدرسة</a>
@@ -1191,7 +1197,7 @@
         if(entry.isIntersecting){
           const id = entry.target.id;
           quicknavItems.forEach(item => {
-            const link = item.querySelector(':scope > a');
+            const link = item.querySelector('.quicknav-drop a');
             const match = link && link.getAttribute('href') === '#' + id;
             item.classList.toggle('active', !!match);
           });
