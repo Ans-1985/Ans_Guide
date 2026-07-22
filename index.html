@@ -1124,6 +1124,13 @@
 <button id="backToTop" aria-label="العودة إلى الأعلى" title="العودة إلى الأعلى" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
 
 <script>
+  // Always start at the top of the page on load/refresh
+  if('scrollRestoration' in history){
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+  window.addEventListener('load', () => window.scrollTo(0, 0));
+
   // Keep the quick-nav bar positioned right below the real header height
   function updateHeaderHeight(){
     const headerEl = document.querySelector('header.top');
