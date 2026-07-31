@@ -62,7 +62,6 @@
     margin:0; background:var(--bg); color:var(--ink);
     font-family:'URW Geometric Arabic', 'Tajawal', sans-serif; line-height:1.8; font-size:16.5px;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
     direction:rtl;
   }
   h1,h2,h3,h4{font-family:'URW Geometric Arabic', 'Tajawal', sans-serif; color:var(--ink); margin:0; font-weight:700;}
@@ -113,6 +112,7 @@
   .mobile-menu-list{
     display:flex; flex-direction:column; flex:1; min-height:0;
     overflow-y:auto; padding:10px 26px 40px;
+    overscroll-behavior:contain;
   }
   .mobile-menu-list a{
     display:block; color:#fff; font-weight:500; font-size:0.92rem;
