@@ -1154,6 +1154,16 @@
 
 <button id="backToTop" aria-label="العودة إلى الأعلى" title="العودة إلى الأعلى" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
 
+<div id="adminBar" style="display:none;">
+  <strong>وضع التحرير</strong>
+  <input type="text" id="ghOwner" placeholder="GitHub username">
+  <input type="text" id="ghRepo" placeholder="اسم المستودع">
+  <input type="password" id="ghToken" placeholder="GitHub Token">
+  <button class="save-btn" id="saveBtn">💾 حفظ التغييرات</button>
+  <span class="status" id="saveStatus"></span>
+  <button class="exit-btn" id="exitEditBtn" style="margin-inline-start:auto;">خروج من وضع التحرير</button>
+</div>
+
 <script>
   // Always start at the top of the page on load/refresh
   if('scrollRestoration' in history){
@@ -1358,16 +1368,6 @@
     });
   })();
 </script>
-
-<div id="adminBar" style="display:none;">
-  <strong>وضع التحرير</strong>
-  <input type="text" id="ghOwner" placeholder="GitHub username">
-  <input type="text" id="ghRepo" placeholder="اسم المستودع">
-  <input type="password" id="ghToken" placeholder="GitHub Token">
-  <button class="save-btn" id="saveBtn">💾 حفظ التغييرات</button>
-  <span class="status" id="saveStatus"></span>
-  <button class="exit-btn" id="exitEditBtn" style="margin-inline-start:auto;">خروج من وضع التحرير</button>
-</div>
 
 </body>
 </html>
