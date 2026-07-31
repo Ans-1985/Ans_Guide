@@ -351,6 +351,37 @@
   }
 
   a:focus-visible, summary:focus-visible{outline:3px solid var(--gold); outline-offset:2px;}
+
+  /* ===== EDIT MODE ===== */
+  body.edit-mode .editable{
+    outline:1px dashed transparent; border-radius:4px; cursor:text; transition:outline-color .1s ease;
+  }
+  body.edit-mode .editable:hover{
+    outline-color:rgba(201,162,75,0.7); background:rgba(201,162,75,0.06);
+  }
+  body.edit-mode .editable:focus{
+    outline:2px solid var(--primary); outline-offset:1px; background:rgba(31,111,92,0.05);
+  }
+  #adminBar{
+    position:fixed; bottom:0; left:0; right:0; z-index:99999;
+    background:var(--primary-dark); color:#fff;
+    padding:12px 18px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    box-shadow:0 -4px 16px rgba(0,0,0,0.25); font-family:'URW Geometric Arabic','Tajawal',sans-serif;
+    font-size:0.85rem;
+  }
+  #adminBar strong{color:var(--gold);}
+  #adminBar input[type="password"], #adminBar input[type="text"]{
+    padding:8px 10px; border-radius:8px; border:none; font-size:0.85rem; width:220px; max-width:40vw;
+  }
+  #adminBar button{
+    padding:8px 16px; border-radius:20px; border:none; font-weight:700; cursor:pointer; font-size:0.85rem;
+  }
+  #adminBar .save-btn{background:var(--gold); color:#1a1a1a;}
+  #adminBar .save-btn:hover{filter:brightness(1.08);}
+  #adminBar .exit-btn{background:rgba(255,255,255,0.15); color:#fff;}
+  #adminBar .exit-btn:hover{background:rgba(255,255,255,0.25);}
+  #adminBar .status{font-size:0.8rem; opacity:0.9;}
+  body.edit-mode main, body.edit-mode .layout{padding-bottom:90px;}
 </style>
 </head>
 <body>
@@ -1212,7 +1243,131 @@
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
     partSections.forEach(sec => spy.observe(sec));
   }
+
+  // ===== EDIT MODE =====
+  // Activate by visiting the page with ?edit=1 in the URL.
+  // Nothing here runs or shows for normal visitors.
+  (function(){
+    const params = new URLSearchParams(window.location.search);
+    if(params.get('edit') !== '1') return;
+
+    const adminBar = document.getElementById('adminBar');
+    const ownerInput = document.getElementById('ghOwner');
+    const repoInput = document.getElementById('ghRepo');
+    const tokenInput = document.getElementById('ghToken');
+    const saveBtn = document.getElementById('saveBtn');
+    const exitBtn = document.getElementById('exitEditBtn');
+    const statusEl = document.getElementById('saveStatus');
+
+    // Restore any previously saved (local-only) repo details/token
+    ownerInput.value = localStorage.getItem('gh_owner') || '';
+    repoInput.value = localStorage.getItem('gh_repo') || '';
+    tokenInput.value = localStorage.getItem('gh_token') || '';
+
+    adminBar.style.display = 'flex';
+    document.body.classList.add('edit-mode');
+
+    // Mark editable text elements
+    const selector = 'main h1, main h2, main h3, main h4, main p, main li, main td, main th, .intro-note p, header .school-name, header h1, header .year';
+    document.querySelectorAll(selector).forEach(el => {
+      // Skip elements that only contain other block elements (avoid nesting editable regions)
+      if(el.children.length > 0 && el.querySelector('h1,h2,h3,h4,p,li,td,th')) return;
+      el.setAttribute('contenteditable', 'true');
+      el.classList.add('editable');
+    });
+
+    function setStatus(msg, isError){
+      statusEl.textContent = msg;
+      statusEl.style.color = isError ? '#ffb4b4' : '#fff';
+    }
+
+    exitBtn.addEventListener('click', () => {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('edit');
+      window.location.href = url.toString();
+    });
+
+    saveBtn.addEventListener('click', async () => {
+      const owner = ownerInput.value.trim();
+      const repo = repoInput.value.trim();
+      const token = tokenInput.value.trim();
+      const path = 'index.html';
+
+      if(!owner || !repo || !token){
+        setStatus('يرجى تعبئة اسم المستخدم واسم المستودع والتوكن.', true);
+        return;
+      }
+
+      localStorage.setItem('gh_owner', owner);
+      localStorage.setItem('gh_repo', repo);
+      localStorage.setItem('gh_token', token);
+
+      setStatus('جارٍ الحفظ...', false);
+      saveBtn.disabled = true;
+
+      try{
+        // Build a clean copy of the page without the admin UI / edit attributes
+        const clone = document.documentElement.cloneNode(true);
+        const cloneAdminBar = clone.querySelector('#adminBar');
+        if(cloneAdminBar) cloneAdminBar.remove();
+        clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+        clone.querySelectorAll('.editable').forEach(el => el.classList.remove('editable'));
+        clone.classList.remove('edit-mode');
+
+        const finalHtml = '<!DOCTYPE html>\n' + clone.outerHTML;
+
+        // Get current file SHA (required by GitHub's API to update a file)
+        const getUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+        const getRes = await fetch(getUrl, {
+          headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github+json' }
+        });
+        if(!getRes.ok){
+          throw new Error('تعذّر الوصول إلى المستودع (تحقّق من الاسم والتوكن). Code: ' + getRes.status);
+        }
+        const getData = await getRes.json();
+        const sha = getData.sha;
+
+        // Encode content as base64 (UTF-8 safe)
+        const encoder = new TextEncoder();
+        const bytes = encoder.encode(finalHtml);
+        let binary = '';
+        bytes.forEach(b => binary += String.fromCharCode(b));
+        const base64Content = btoa(binary);
+
+        const putRes = await fetch(getUrl, {
+          method: 'PUT',
+          headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github+json' },
+          body: JSON.stringify({
+            message: 'تحديث محتوى الدليل عبر وضع التحرير',
+            content: base64Content,
+            sha: sha
+          })
+        });
+
+        if(!putRes.ok){
+          const errData = await putRes.json().catch(() => ({}));
+          throw new Error('فشل الحفظ: ' + (errData.message || putRes.status));
+        }
+
+        setStatus('تمّ الحفظ بنجاح ✓ (سيظهر التحديث خلال دقيقة تقريبًا)', false);
+      }catch(err){
+        setStatus(err.message || 'حدث خطأ غير متوقّع.', true);
+      }finally{
+        saveBtn.disabled = false;
+      }
+    });
+  })();
 </script>
+
+<div id="adminBar" style="display:none;">
+  <strong>وضع التحرير</strong>
+  <input type="text" id="ghOwner" placeholder="GitHub username">
+  <input type="text" id="ghRepo" placeholder="اسم المستودع">
+  <input type="password" id="ghToken" placeholder="GitHub Token">
+  <button class="save-btn" id="saveBtn">💾 حفظ التغييرات</button>
+  <span class="status" id="saveStatus"></span>
+  <button class="exit-btn" id="exitEditBtn" style="margin-inline-start:auto;">خروج من وضع التحرير</button>
+</div>
 
 </body>
 </html>
