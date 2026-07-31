@@ -108,11 +108,17 @@
   }
   .mobile-menu-list{display:flex; flex-direction:column;}
   .mobile-menu-list a{
-    display:block; color:#fff; font-weight:700; font-size:0.98rem;
-    padding:15px 4px; border-bottom:1px solid rgba(255,255,255,0.15);
+    display:block; color:#fff; font-weight:500; font-size:0.92rem;
+    padding:12px 4px 12px 16px; border-bottom:1px solid rgba(255,255,255,0.1);
     text-decoration:none;
   }
   .mobile-menu-list a:hover, .mobile-menu-list a:focus-visible{color:var(--gold);}
+  .mobile-menu-group-title{
+    color:var(--gold); font-weight:800; font-size:0.8rem; letter-spacing:0.5px;
+    text-transform:uppercase; padding:20px 4px 8px; margin-top:4px;
+    border-top:1px solid rgba(255,255,255,0.18);
+  }
+  .mobile-menu-list .mobile-menu-group-title:first-child{border-top:none; margin-top:0; padding-top:0;}
 
   /* ===== HEADER ===== */
   header.top{
@@ -406,13 +412,18 @@
   <div class="mobile-menu-panel">
     <button id="mobileMenuClose" class="mobile-menu-close" aria-label="إغلاق القائمة">×</button>
     <nav class="mobile-menu-list" aria-label="فهرس الدليل (جوال)">
-      <a href="#intro">المقدّمة</a>
+      <div class="mobile-menu-group-title">المقدّمة</div>
+      <a href="#intro">رؤيتنا، رسالتنا، فلسفة المدرسة</a>
       <a href="#programs">البرامج التعليميّة</a>
       <a href="#language">لغة التواصل والتدريس</a>
+
+      <div class="mobile-menu-group-title">الدعم والرعاية</div>
       <a href="#resources">قسم المصادر التعليميّة</a>
       <a href="#academic-guidance">الإرشاد الأكاديميّ</a>
       <a href="#psychosocial">الرعاية النفسيّة والاجتماعيّة</a>
       <a href="#health">الرعاية الصحّيّة والإصابات أثناء الدوام</a>
+
+      <div class="mobile-menu-group-title">الحياة المدرسيّة</div>
       <a href="#sustainability">التنمية المستدامة في المدرسة</a>
       <a href="#class-distribution">توزيع الطلبة على الشُعَب</a>
       <a href="#library">المكتبة المدرسيّة</a>
@@ -420,9 +431,13 @@
       <a href="#technology">استخدام التكنولوجيا</a>
       <a href="#trips">الرحلات المدرسيّة</a>
       <a href="#sports">المنتخبات الرياضيّة</a>
+
+      <div class="mobile-menu-group-title">التعلّم والتقويم</div>
       <a href="#homework">المهامّ البيتيّة</a>
       <a href="#assessment">التقويم</a>
       <a href="#reports">التقارير المدرسيّة</a>
+
+      <div class="mobile-menu-group-title">الدوام والانضباط</div>
       <a href="#attendance-hours">الدوام وأوقات الدوام</a>
       <a href="#absence">التغيّب</a>
       <a href="#pass-fail">النجاح والإكمال والرسوب</a>
@@ -430,17 +445,23 @@
       <a href="#gates">دخول وخروج الطلبة من الحرم المدرسيّ</a>
       <a href="#b12">تطبيق B12</a>
       <a href="#entry-exit-procedures">إجراءات الدخول والخروج</a>
+
+      <div class="mobile-menu-group-title">الحياة اليوميّة</div>
       <a href="#meals">وجبات الطلبة</a>
       <a href="#cafeteria">المقصف</a>
       <a href="#celebrations">الاحتفال بالأعياد والمناسبات</a>
       <a href="#uniform">الزيّ المدرسيّ</a>
       <a href="#property">الممتلكات المدرسيّة</a>
       <a href="#lost-found">المفقودات</a>
+
+      <div class="mobile-menu-group-title">التواصل مع الأهل</div>
       <a href="#campus-access">دخول أولياء الأمر إلى الحرم المدرسيّ</a>
       <a href="#communication">التواصل بين المدرسة وأولياء الأمر</a>
       <a href="#participation">مشاركة أولياء الأمر في الأنشطة</a>
       <a href="#helper-parent">وليّ الأمر المساعد</a>
       <a href="#social-media">شبكات التواصل الاجتماعيّ</a>
+
+      <div class="mobile-menu-group-title">الملحقات</div>
       <a href="#appendices">قائمة الملحقات</a>
       <a href="#appendix-buses">ملحق ١: تعليمات استخدام حافلات المدرسة</a>
     </nav>
