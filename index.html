@@ -306,10 +306,10 @@
   .table-wrap table.simple{margin:0; min-width:480px;}
   table.simple{width:100%; border-collapse:separate; border-spacing:0; margin:10px 0 16px; font-size:0.9rem; border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm);}
   table.simple th, table.simple td{padding:6px 12px 10px; text-align:right; vertical-align:top; border:1px solid var(--line);}
-  table.table-phones{table-layout:auto;}
-  table.table-phones th:last-child, table.table-phones td:last-child{
-    width:1%; white-space:nowrap;
-  }
+  table.table-phones{table-layout:fixed; max-width:640px; width:100%; margin-inline-end:auto;}
+  table.table-phones th:first-child, table.table-phones td:first-child{width:65%; white-space:normal;}
+  table.table-phones th:last-child, table.table-phones td:last-child{width:35%; white-space:normal;}
+  .table-wrap table.table-phones{min-width:0;}
   table.simple td > *:first-child, table.simple th > *:first-child{margin-top:0;}
   table.simple th{background:var(--primary); color:#fff; font-weight:700; border-color:var(--primary-dark);}
   table.simple tr:nth-child(even) td{background:var(--surface-2);}
@@ -351,14 +351,6 @@
 
   @media (max-width:640px){
     body{font-size:15.5px;}
-    table.table-phones{table-layout:fixed; width:100%;}
-    .table-wrap table.table-phones{min-width:0;}
-    table.table-phones th:first-child, table.table-phones td:first-child{
-      width:64%; white-space:normal;
-    }
-    table.table-phones th:last-child, table.table-phones td:last-child{
-      width:36%; white-space:normal;
-    }
     .header-inner{gap:10px; padding:12px 14px;}
     .emblem{width:56px; border-radius:12px;}
     header.top .head-text{min-width:0;}
