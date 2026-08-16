@@ -53,7 +53,7 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth; overflow-x:hidden;}
-  [id]{scroll-margin-top:calc(var(--header-h, 90px) + 20px);}
+  [id]{scroll-margin-top:calc(var(--sticky-h, 150px) + 16px);}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
@@ -320,7 +320,7 @@
   }
 
   @media (max-width:900px){
-    [id]{scroll-margin-top:calc(var(--header-h, 130px) + 20px);}
+    [id]{scroll-margin-top:calc(var(--sticky-h, 130px) + 16px);}
     .layout{flex-direction:column; padding-top:16px; align-items:stretch;}
     nav.toc{display:none;}
     main{padding:0 16px 80px;}
@@ -1203,7 +1203,7 @@
         <div class="table-wrap"><table class="simple">
           <thead><tr><th>الجهة</th><th>رقم الهاتف</th></tr></thead>
           <tbody>
-            <tr><td>رقم المدرسة الرئيس (أرضي)</td><td>541106706</td></tr>
+            <tr><td>رقم المدرسة الرئيس (أرضي)</td><td>06-5411067</td></tr>
             <tr><td>مرحلة الروضة</td><td>0797676951</td></tr>
             <tr><td>المرحلة الأساسيّة الأولى (1–3)</td><td>0798600267</td></tr>
             <tr><td>المرحلة الأساسيّة المتوسّطة (4–6)</td><td>0798600256</td></tr>
@@ -1262,9 +1262,16 @@
   // Keep the quick-nav bar positioned right below the real header height
   function updateHeaderHeight(){
     const headerEl = document.querySelector('header.top');
+    const quicknavEl = document.querySelector('nav.quicknav');
+    let totalStickyHeight = 0;
     if(headerEl){
+      totalStickyHeight += headerEl.offsetHeight;
       document.documentElement.style.setProperty('--header-h', headerEl.offsetHeight + 'px');
     }
+    if(quicknavEl && window.getComputedStyle(quicknavEl).display !== 'none'){
+      totalStickyHeight += quicknavEl.offsetHeight;
+    }
+    document.documentElement.style.setProperty('--sticky-h', totalStickyHeight + 'px');
   }
   updateHeaderHeight();
   window.addEventListener('resize', updateHeaderHeight);
