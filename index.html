@@ -206,6 +206,9 @@
   .quicknav-item:focus-within .quicknav-drop{
     display:flex;
   }
+  .quicknav-item.menu-closing .quicknav-drop{
+    display:none !important;
+  }
   .quicknav-drop a{
     background:none; border:none; border-radius:8px; padding:9px 12px;
     font-size:0.84rem; font-weight:500; color:var(--ink); text-align:right;
@@ -303,6 +306,7 @@
   .table-wrap table.simple{margin:0; min-width:480px;}
   table.simple{width:100%; border-collapse:separate; border-spacing:0; margin:10px 0 16px; font-size:0.9rem; border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm);}
   table.simple th, table.simple td{padding:6px 12px 10px; text-align:right; vertical-align:top; border:1px solid var(--line);}
+  table.table-phones th:first-child, table.table-phones td:first-child{width:55%;}
   table.simple td > *:first-child, table.simple th > *:first-child{margin-top:0;}
   table.simple th{background:var(--primary); color:#fff; font-weight:700; border-color:var(--primary-dark);}
   table.simple tr:nth-child(even) td{background:var(--surface-2);}
@@ -1261,7 +1265,7 @@
       <div class="part-head"><span class="part-num">ملحق ٢</span><h2>كشف أرقام هواتف المدرسة</h2></div>
 
       <article class="sec">
-        <div class="table-wrap"><table class="simple">
+        <div class="table-wrap"><table class="simple table-phones">
           <thead><tr><th>الجهة</th><th>رقم الهاتف</th></tr></thead>
           <tbody>
             <tr><td>رقم المدرسة الرئيس (أرضي)</td><td>06-5411067</td></tr>
@@ -1879,6 +1883,18 @@
   }
   window.addEventListener('scroll', updateOnScroll);
   updateOnScroll();
+
+  // Force-close the quick-nav dropdown after a choice is made (fixes it staying
+  // open on touch devices, which have no "unhover" event after tapping a link)
+  document.querySelectorAll('.quicknav-drop a').forEach(link => {
+    link.addEventListener('click', () => {
+      const item = link.closest('.quicknav-item');
+      if(!item) return;
+      item.classList.add('menu-closing');
+      if(document.activeElement) document.activeElement.blur();
+      setTimeout(() => item.classList.remove('menu-closing'), 600);
+    });
+  });
 
   // Active tab highlighting for the quick-nav bar
   const quicknavItems = Array.from(document.querySelectorAll('.quicknav-item'));
