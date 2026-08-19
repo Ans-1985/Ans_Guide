@@ -259,6 +259,7 @@
     padding:6px 10px; border-radius:8px;
   }
   nav.toc a:hover, nav.toc a:focus-visible{background:var(--primary-tint); color:var(--primary-dark); outline:none;}
+  nav.toc a.active{background:var(--gold-tint); color:#6b5119; font-weight:700;}
 
   main{flex:1; min-width:0; padding:0 24px 100px 4px;}
 
@@ -1804,23 +1805,23 @@
     });
   });
 
-  // Active tab highlighting for the quick-nav bar
-  const quicknavItems = Array.from(document.querySelectorAll('.quicknav-item'));
-  const partSections = Array.from(document.querySelectorAll('main .part[id]'));
-  if(quicknavItems.length && partSections.length){
-    const spy = new IntersectionObserver((entries) => {
+  // Active-section highlighting for the sidebar (الفهرس)
+  const tocLinks = Array.from(document.querySelectorAll('nav.toc a[href^="#"]'));
+  const tocTargets = tocLinks
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+  if(tocLinks.length && tocTargets.length){
+    const tocSpy = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
           const id = entry.target.id;
-          quicknavItems.forEach(item => {
-            const links = Array.from(item.querySelectorAll('.quicknav-drop a'));
-            const match = links.some(a => a.getAttribute('href') === '#' + id);
-            item.classList.toggle('active', match);
+          tocLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
           });
         }
       });
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-    partSections.forEach(sec => spy.observe(sec));
+    tocTargets.forEach(el => tocSpy.observe(el));
   }
 
   // ===== EDIT MODE =====
