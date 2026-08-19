@@ -237,8 +237,8 @@
     padding-top:24px;
   }
   nav.toc{
-    width:270px; flex-shrink:0; position:sticky; top:100px;
-    max-height:calc(100vh - 116px); overflow-y:auto;
+    width:270px; flex-shrink:0; position:sticky; top:calc(var(--sticky-h, 100px) + 8px);
+    max-height:calc(100vh - var(--sticky-h, 100px) - 24px); overflow-y:auto;
     background:var(--surface); border-radius:var(--radius); box-shadow:var(--shadow-sm);
     padding:22px 18px; margin-inline-start:20px;
   }
