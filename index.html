@@ -120,12 +120,6 @@
     text-decoration:none;
   }
   .mobile-menu-list a:hover, .mobile-menu-list a:focus-visible{color:var(--gold);}
-  .mobile-menu-group-title{
-    color:var(--gold); font-weight:800; font-size:0.8rem; letter-spacing:0.5px;
-    text-transform:uppercase; padding:20px 4px 8px; margin-top:4px;
-    border-top:1px solid rgba(255,255,255,0.18);
-  }
-  .mobile-menu-list .mobile-menu-group-title:first-child{border-top:none; margin-top:0; padding-top:0;}
 
   /* ===== HEADER ===== */
   header.top{
@@ -259,7 +253,7 @@
   }
   nav.toc details[open] > summary::before{transform:rotate(-90deg);}
   nav.toc summary:hover{background:var(--surface-2);}
-  nav.toc ul{list-style:none; padding-inline-start:18px; margin:2px 0 8px;}
+  nav.toc ul{list-style:none; padding-inline-start:0; margin:0;}
   nav.toc a{
     display:block; text-decoration:none; font-size:0.84rem; color:var(--muted);
     padding:6px 10px; border-radius:8px;
@@ -495,18 +489,13 @@
       <button id="mobileMenuClose" class="mobile-menu-close" aria-label="إغلاق القائمة">×</button>
     </div>
     <nav class="mobile-menu-list" aria-label="فهرس الدليل (جوال)">
-      <div class="mobile-menu-group-title">المقدّمة</div>
-      <a href="#intro">رؤيتنا، مهمّتنا، فلسفة المدرسة, المراحل الدراسيّة</a>
+      <a href="#intro">رؤيتنا، مهمّتنا، فلسفة المدرسة</a>
       <a href="#programs">البرامج التعليميّة</a>
       <a href="#language">لغة التواصل والتدريس</a>
-
-      <div class="mobile-menu-group-title">الدعم والرعاية</div>
       <a href="#resources">قسم المصادر التعليميّة</a>
       <a href="#academic-guidance">الإرشاد الأكاديميّ</a>
       <a href="#psychosocial">الرعاية النفسيّة والاجتماعيّة</a>
       <a href="#health">الرعاية الصحّيّة والإصابات خلال الدوام المدرسيّ</a>
-
-      <div class="mobile-menu-group-title">الحياة المدرسيّة</div>
       <a href="#sustainability">التنمية المستدامة في المدرسة</a>
       <a href="#class-distribution">توزيع الطلبة على الشعب</a>
       <a href="#library">المكتبة المدرسيّة</a>
@@ -514,13 +503,9 @@
       <a href="#technology">استخدام التكنولوجيا</a>
       <a href="#trips">الرحلات المدرسيّة</a>
       <a href="#sports">المنتخبات الرياضيّة</a>
-
-      <div class="mobile-menu-group-title">التعلّم والتقويم</div>
       <a href="#homework">المهامّ البيتيّة</a>
       <a href="#assessment">التقويم</a>
       <a href="#reports">التقارير المدرسية</a>
-
-      <div class="mobile-menu-group-title">الدوام والانضباط</div>
       <a href="#school-hours-general">الدوام المدرسيّ</a>
       <a href="#school-hours-times">أوقات الدوام المدرسيّ</a>
       <a href="#absence">التغيّب</a>
@@ -530,24 +515,18 @@
       <a href="#b12">تطبيق B 12</a>
       <a href="#entry-procedures">الإجراءات المتّبعة عند دخول الطلبة</a>
       <a href="#exit-procedures">الإجراءات المتّبعة عند خروج الطلبة</a>
-
-      <div class="mobile-menu-group-title">الحياة اليوميّة</div>
       <a href="#meals">وجبات الطلبة</a>
       <a href="#cafeteria">المقصف</a>
       <a href="#celebrations">الاحتفال بالأعياد والمناسبات</a>
       <a href="#uniform">الزيّ المدرسيّ</a>
       <a href="#property">الممتلكات المدرسيّة</a>
       <a href="#lost-found">المفقودات</a>
-
-      <div class="mobile-menu-group-title">التواصل مع الأهل</div>
       <a href="#campus-access">دخول أولياء الأمر إلى الحرم المدرسيّ</a>
       <a href="#communication">التواصل بين المدرسة وأولياء الأمر</a>
       <a href="#participation">مشاركة أولياء الأمر في الأنشطة المدرسيّة</a>
       <a href="#helper-parent-requirements">المتطلّبات المطلوبة في أولياء الأمر المساعدين</a>
       <a href="#helper-parent-responsibilities">مسؤوليّات أولياء الأمر المساعدين</a>
       <a href="#social-media">شبكات التواصل الاجتماعيّ</a>
-
-      <div class="mobile-menu-group-title">الملحقات</div>
       <a href="#appendices">قائمة الملحقات</a>
       <a href="#appendix-buses">ملحق 1: الحافلات المدرسيّة</a>
       <a href="#appendix-phones">ملحق 2: كشف أرقام هواتف المدرسة</a>
@@ -559,204 +538,58 @@
   </div>
 </div>
 
-<nav class="quicknav" aria-label="روابط سريعة">
-  <div class="quicknav-inner">
-
-    <div class="quicknav-item">
-      <span class="quicknav-label">المقدّمة</span>
-      <div class="quicknav-drop">
-        <a href="#intro">رؤيتنا، مهمّتنا، فلسفة المدرسة, المراحل الدراسيّة</a>
-        <a href="#programs">البرامج التعليميّة</a>
-        <a href="#language">لغة التواصل والتدريس</a>
-      </div>
-    </div>
-
-    <div class="quicknav-item">
-      <span class="quicknav-label">الدعم والرعاية</span>
-      <div class="quicknav-drop">
-        <a href="#resources">قسم المصادر التعليميّة</a>
-        <a href="#academic-guidance">الإرشاد الأكاديميّ</a>
-        <a href="#psychosocial">الرعاية النفسيّة والاجتماعيّة</a>
-        <a href="#health">الرعاية الصحّيّة والإصابات خلال الدوام المدرسيّ</a>
-      </div>
-    </div>
-
-    <div class="quicknav-item">
-      <span class="quicknav-label">الحياة المدرسيّة</span>
-      <div class="quicknav-drop">
-        <a href="#sustainability">التنمية المستدامة في المدرسة</a>
-        <a href="#class-distribution">توزيع الطلبة على الشعب</a>
-        <a href="#library">المكتبة المدرسيّة</a>
-        <a href="#story-committee">لجنة تقييم القصص الصفّيّة</a>
-        <a href="#technology">استخدام التكنولوجيا</a>
-        <a href="#trips">الرحلات المدرسيّة</a>
-        <a href="#sports">المنتخبات الرياضيّة</a>
-      </div>
-    </div>
-
-    <div class="quicknav-item">
-      <span class="quicknav-label">التعلّم والتقويم</span>
-      <div class="quicknav-drop">
-        <a href="#homework">المهامّ البيتيّة</a>
-        <a href="#assessment">التقويم</a>
-        <a href="#reports">التقارير المدرسية</a>
-      </div>
-    </div>
-
-    <div class="quicknav-item">
-      <span class="quicknav-label">الدوام والانضباط</span>
-      <div class="quicknav-drop">
-        <a href="#school-hours-general">الدوام المدرسيّ</a>
-        <a href="#school-hours-times">أوقات الدوام المدرسيّ</a>
-        <a href="#absence">التغيّب</a>
-        <a href="#pass-fail">النجاح والإكمال والرسوب</a>
-        <a href="#departure">المغادرة</a>
-        <a href="#gates">دخول وخروج الطلبة من الحرم المدرسيّ</a>
-        <a href="#b12">تطبيق B 12</a>
-        <a href="#entry-procedures">الإجراءات المتّبعة عند دخول الطلبة</a>
-        <a href="#exit-procedures">الإجراءات المتّبعة عند خروج الطلبة</a>
-      </div>
-    </div>
-
-    <div class="quicknav-item">
-      <span class="quicknav-label">الحياة اليوميّة</span>
-      <div class="quicknav-drop">
-        <a href="#meals">وجبات الطلبة</a>
-        <a href="#cafeteria">المقصف</a>
-        <a href="#celebrations">الاحتفال بالأعياد والمناسبات</a>
-        <a href="#uniform">الزيّ المدرسيّ</a>
-        <a href="#property">الممتلكات المدرسيّة</a>
-        <a href="#lost-found">المفقودات</a>
-      </div>
-    </div>
-
-    <div class="quicknav-item">
-      <span class="quicknav-label">التواصل مع الأهل</span>
-      <div class="quicknav-drop">
-        <a href="#campus-access">دخول أولياء الأمر إلى الحرم المدرسيّ</a>
-        <a href="#communication">التواصل بين المدرسة وأولياء الأمر</a>
-        <a href="#participation">مشاركة أولياء الأمر في الأنشطة المدرسيّة</a>
-        <a href="#helper-parent-requirements">المتطلّبات المطلوبة في أولياء الأمر المساعدين</a>
-        <a href="#helper-parent-responsibilities">مسؤوليّات أولياء الأمر المساعدين
-</a>
-        <a href="#social-media">شبكات التواصل الاجتماعيّ</a>
-      </div>
-    </div>
-
-    <div class="quicknav-item">
-      <span class="quicknav-label">الملحقات</span>
-      <div class="quicknav-drop">
-        <a href="#appendices">قائمة الملحقات</a>
-       <a href="#appendix-buses">ملحق 1: الحافلات المدرسيّة</a>
-        <a href="#appendix-phones">ملحق 2: كشف أرقام هواتف المدرسة</a>
-        <a href="#appendix-calendar">ملحق 3: الرزنامة المدرسيّة</a>
-        <a href="#appendix-matrix">ملحق 4: مصفوفة الإجراءات</a>
-        <a href="#appendix-conduct">ملحق 5: ميثاق السلوك</a>
-        <a href="#appendix-tech-policy">ملحق 6: سياسة التكنولوجيا والاتّصالات</a>
-      </div>
-    </div>
-
-  </div>
-</nav>
-
 <div class="layout">
 
   <nav class="toc" aria-label="فهرس الدليل">
     <span class="toc-label">الفهرس</span>
 
-    <details open>
-      <summary>المقدّمة</summary>
-      <ul>
-        <li><a href="#intro">رؤيتنا، مهمّتنا، فلسفة المدرسة, المراحل الدراسيّة</a></li>
-        <li><a href="#programs">البرامج التعليميّة</a></li>
-        <li><a href="#language">لغة التواصل والتدريس</a></li>
-      </ul>
-    </details>
-
-    <details>
-      <summary>الدعم والرعاية</summary>
-      <ul>
-        <li><a href="#resources">قسم المصادر التعليميّة</a></li>
-        <li><a href="#academic-guidance">الإرشاد الأكاديميّ</a></li>
-        <li><a href="#psychosocial">الرعاية النفسيّة والاجتماعيّة</a></li>
-        <li><a href="#health">الرعاية الصحّيّة والإصابات خلال الدوام المدرسيّ</a></li>
-      </ul>
-    </details>
-
-    <details>
-      <summary>الحياة المدرسيّة</summary>
-      <ul>
-        <li><a href="#sustainability">التنمية المستدامة في المدرسة</a></li>
-        <li><a href="#class-distribution">توزيع الطلبة على الشعب</a></li>
-        <li><a href="#library">المكتبة المدرسيّة</a></li>
-        <li><a href="#story-committee">لجنة تقييم القصص الصفّيّة</a></li>
-        <li><a href="#technology">استخدام التكنولوجيا</a></li>
-        <li><a href="#trips">الرحلات المدرسيّة</a></li>
-        <li><a href="#sports">المنتخبات الرياضيّة</a></li>
-      </ul>
-    </details>
-
-    <details>
-      <summary>التعلّم والتقويم</summary>
-      <ul>
-        <li><a href="#homework">المهامّ البيتيّة</a></li>
-        <li><a href="#assessment">التقويم</a></li>
-        <li><a href="#reports">التقارير المدرسية</a></li>
-      </ul>
-    </details>
-
-    <details>
-      <summary>الدوام والانضباط</summary>
-      <ul>
-        <li><a href="#school-hours-general">الدوام المدرسيّ</a></li>
-        <li><a href="#school-hours-times">أوقات الدوام المدرسيّ</a></li>
-        <li><a href="#absence">التغيّب</a></li>
-        <li><a href="#pass-fail">النجاح والإكمال والرسوب</a></li>
-        <li><a href="#departure">المغادرة</a></li>
-        <li><a href="#gates">دخول وخروج الطلبة من الحرم المدرسيّ</a></li>
-        <li><a href="#b12">تطبيق B 12</a></li>
-        <li><a href="#entry-procedures">الإجراءات المتّبعة عند دخول الطلبة</a></li>
-        <li><a href="#exit-procedures">الإجراءات المتّبعة عند خروج الطلبة</a></li>
-      </ul>
-    </details>
-
-    <details>
-      <summary>الحياة اليوميّة</summary>
-      <ul>
-        <li><a href="#meals">وجبات الطلبة</a></li>
-        <li><a href="#cafeteria">المقصف</a></li>
-        <li><a href="#celebrations">الاحتفال بالأعياد والمناسبات</a></li>
-        <li><a href="#uniform">الزيّ المدرسيّ</a></li>
-        <li><a href="#property">الممتلكات المدرسيّة</a></li>
-        <li><a href="#lost-found">المفقودات</a></li>
-      </ul>
-    </details>
-
-    <details>
-      <summary>التواصل مع الأهل</summary>
-      <ul>
-        <li><a href="#campus-access">دخول أولياء الأمر إلى الحرم المدرسيّ</a></li>
-        <li><a href="#communication">التواصل بين المدرسة وأولياء الأمر</a></li>
-        <li><a href="#participation">مشاركة أولياء الأمر في الأنشطة المدرسيّة</a></li>
-        <li><a href="#helper-parent-requirements">المتطلّبات المطلوبة في أولياء الأمر المساعدين</a></li>
-        <li><a href="#helper-parent-responsibilities">مسؤوليّات أولياء الأمر المساعدين
-</a></li>
-        <li><a href="#social-media">شبكات التواصل الاجتماعيّ</a></li>
-      </ul>
-    </details>
-
-    <details>
-      <summary>الملحقات</summary>
-      <ul>
-        <li><a href="#appendices">قائمة الملحقات</a></li>
-         <li><a href="#appendix-buses">ملحق 1: الحافلات المدرسيّة</a></li>
-        <li><a href="#appendix-phones">ملحق 2: كشف أرقام هواتف المدرسة</a></li>
-        <li><a href="#appendix-calendar">ملحق 3: الرزنامة المدرسيّة</a></li>
-        <li><a href="#appendix-matrix">ملحق 4: مصفوفة الإجراءات</a></li>
-        <li><a href="#appendix-conduct">ملحق 5: ميثاق السلوك</a></li>
-        <li><a href="#appendix-tech-policy">ملحق 6: سياسة التكنولوجيا والاتّصالات</a></li>
-      </ul>
-    </details>
+    <ul>
+      <li><a href="#intro">رؤيتنا، مهمّتنا، فلسفة المدرسة</a></li>
+      <li><a href="#programs">البرامج التعليميّة</a></li>
+      <li><a href="#language">لغة التواصل والتدريس</a></li>
+      <li><a href="#resources">قسم المصادر التعليميّة</a></li>
+      <li><a href="#academic-guidance">الإرشاد الأكاديميّ</a></li>
+      <li><a href="#psychosocial">الرعاية النفسيّة والاجتماعيّة</a></li>
+      <li><a href="#health">الرعاية الصحّيّة والإصابات خلال الدوام المدرسيّ</a></li>
+      <li><a href="#sustainability">التنمية المستدامة في المدرسة</a></li>
+      <li><a href="#class-distribution">توزيع الطلبة على الشعب</a></li>
+      <li><a href="#library">المكتبة المدرسيّة</a></li>
+      <li><a href="#story-committee">لجنة تقييم القصص الصفّيّة</a></li>
+      <li><a href="#technology">استخدام التكنولوجيا</a></li>
+      <li><a href="#trips">الرحلات المدرسيّة</a></li>
+      <li><a href="#sports">المنتخبات الرياضيّة</a></li>
+      <li><a href="#homework">المهامّ البيتيّة</a></li>
+      <li><a href="#assessment">التقويم</a></li>
+      <li><a href="#reports">التقارير المدرسية</a></li>
+      <li><a href="#school-hours-general">الدوام المدرسيّ</a></li>
+      <li><a href="#school-hours-times">أوقات الدوام المدرسيّ</a></li>
+      <li><a href="#absence">التغيّب</a></li>
+      <li><a href="#pass-fail">النجاح والإكمال والرسوب</a></li>
+      <li><a href="#departure">المغادرة</a></li>
+      <li><a href="#gates">دخول وخروج الطلبة من الحرم المدرسيّ</a></li>
+      <li><a href="#b12">تطبيق B 12</a></li>
+      <li><a href="#entry-procedures">الإجراءات المتّبعة عند دخول الطلبة</a></li>
+      <li><a href="#exit-procedures">الإجراءات المتّبعة عند خروج الطلبة</a></li>
+      <li><a href="#meals">وجبات الطلبة</a></li>
+      <li><a href="#cafeteria">المقصف</a></li>
+      <li><a href="#celebrations">الاحتفال بالأعياد والمناسبات</a></li>
+      <li><a href="#uniform">الزيّ المدرسيّ</a></li>
+      <li><a href="#property">الممتلكات المدرسيّة</a></li>
+      <li><a href="#lost-found">المفقودات</a></li>
+      <li><a href="#campus-access">دخول أولياء الأمر إلى الحرم المدرسيّ</a></li>
+      <li><a href="#communication">التواصل بين المدرسة وأولياء الأمر</a></li>
+      <li><a href="#participation">مشاركة أولياء الأمر في الأنشطة المدرسيّة</a></li>
+      <li><a href="#helper-parent-requirements">المتطلّبات المطلوبة في أولياء الأمر المساعدين</a></li>
+      <li><a href="#helper-parent-responsibilities">مسؤوليّات أولياء الأمر المساعدين</a></li>
+      <li><a href="#social-media">شبكات التواصل الاجتماعيّ</a></li>
+      <li><a href="#appendices">قائمة الملحقات</a></li>
+      <li><a href="#appendix-buses">ملحق 1: الحافلات المدرسيّة</a></li>
+      <li><a href="#appendix-phones">ملحق 2: كشف أرقام هواتف المدرسة</a></li>
+      <li><a href="#appendix-calendar">ملحق 3: الرزنامة المدرسيّة</a></li>
+      <li><a href="#appendix-matrix">ملحق 4: مصفوفة الإجراءات</a></li>
+      <li><a href="#appendix-conduct">ملحق 5: ميثاق السلوك</a></li>
+      <li><a href="#appendix-tech-policy">ملحق 6: سياسة التكنولوجيا والاتّصالات</a></li>
+    </ul>
   </nav>
 
   <main>
@@ -766,7 +599,7 @@
 
     <!-- PART 1 -->
     <section class="part" id="intro">
-      <div class="part-head"><h2>رؤيتنا، مهمّتنا، فلسفة المدرسة, المراحل الدراسيّة</h2></div>
+      <div class="part-head"><h2></h2></div>
 
       <article class="sec">
         <h3>رؤيتنا</h3>
@@ -777,7 +610,7 @@
 
         <h3>فلسفة المدرســــة</h3>
         <p>تقوم فلسفة عمّان الوطنيّة على الإيمان بقدرات الطفل ورغبته الفطريّة في التعلّم، وتعمل على تنمية هذه القدرات المختلفة نموًّا سليمًا متوازنًا في بيئة صحّيّة آمنة.</p>
-        <p>ترى المدرسة أنّ لها دورًا فعّالًا في نموّ شخصيّة الطفل الفرديّة والاجتماعيّة، فتسعى لتعلّم نشط يهتمّ بنتاجات ذات قيمة، تتعدّى النتاجات المعرفيّة إلى نتاجات تخلق إنسانًا ناقدًا مبدعًا، وباحثًا قادرًا على التعلّم الذاتيّ المستمرّ، إنسانًا مقدّرًا لذاته، قادرًا على التغيّر الإيجابيّ، متفاعلًا مع الآخرين كما تعي المدرسة أهمّيّة التقويم ودوره المهمّ المؤثّر في شخصيّة الطالب/ الطالبة، فتركّـز على تقويم تربويّ ودّيّ متمايز متكرّر مستمرّ.</p>
+        <p>ترى المدرسة أنّ لها دورًا فعّالًا في نموّ شخصيّة الطفل الفرديّة والاجتماعيّة، فتسعى لتعلّم نشط يهتمّ بنتاجات ذات قيمة، تتعدّى النتاجات المعرفيّة إلى نتاجات تخلق إنسانًا ناقدًا مبدعًا، وباحثًا قادرًا على التعلّم الذاتيّ المستمرّ، إنسانًا مقدّرًا لذاته، قادرًا على التغيّر الإيجابيّ، متفاعلًا مع الآخرين. كما تعي المدرسة أهمّيّة التقويم ودوره المهمّ المؤثّر في شخصيّة الطالب/ الطالبة، فتركّـز على تقويم تربويّ ودّيّ متمايز متكرّر مستمرّ.</p>
 
         <h3>المراحل الدراسيّة</h3>
         <p>تضمّ مدرسة عمّان الوطنيّة خمس مراحل، على رأس كل منها مدير/ة مسؤول/ة:</p>
@@ -793,7 +626,7 @@
 
     <!-- PART 2 -->
     <section class="part" id="programs">
-      <div class="part-head"><h2>البرامج التعليميّة ولغة التدريس</h2></div>
+      <div class="part-head"><h2></h2></div>
 
       <article class="sec">
         <h3>البرامج التعليميّة</h3>
@@ -810,7 +643,7 @@
 
     <!-- PART 3 -->
     <section class="part" id="resources">
-      <div class="part-head"><h2>الدعم والرعاية</h2></div>
+      <div class="part-head"><h2></h2></div>
 
       <article class="sec",color>
         <h3>قسم المصادر التعليميّة</h3>
@@ -866,7 +699,7 @@
 
     <!-- PART 4 -->
     <section class="part" id="sustainability">
-      <div class="part-head"><h2>الحياة المدرسيّة</h2></div>
+      <div class="part-head"><h2></h2></div>
 
       <article class="sec">
         <h3>التنمية المستدامة في المدرسة</h3>
@@ -939,7 +772,7 @@
 
     <!-- PART 5 -->
     <section class="part" id="homework">
-      <div class="part-head"><h2>المهامّ البيتيّة والتقويم والتقارير المدرسيّة</h2></div>
+      <div class="part-head"><h2></h2></div>
 
       <article class="sec">
         <h3>المهامّ البيتيّة</h3>
@@ -983,7 +816,7 @@
 
     <!-- PART 6 -->
     <section class="part" id="attendance-hours">
-      <div class="part-head"><h2>الدوام والانضباط</h2></div>
+      <div class="part-head"><h2></h2></div>
 
       <article class="sec">
         <h3 id="school-hours-general">الدوام المدرسيّ</h3>
@@ -1104,7 +937,7 @@
 
     <!-- PART 7 -->
     <section class="part" id="meals">
-      <div class="part-head"><h2>الحياة اليوميّة</h2></div>
+      <div class="part-head"><h2></h2></div>
 
       <article class="sec">
         <h3>وجبات الطلبة</h3>
@@ -1162,7 +995,7 @@
 
     <!-- PART 8 -->
     <section class="part" id="campus-access">
-      <div class="part-head"><h2>التواصل مع الأهل</h2></div>
+      <div class="part-head"><h2></h2></div>
 
       <article class="sec">
         <h3>دخول أولياء الأمر إلى الحرم المدرسيّ</h3>
@@ -1277,7 +1110,7 @@
 
     <!-- APPENDICES -->
     <section class="part" id="appendices">
-      <div class="part-head"><h2>الملحقات</h2></div>
+      <div class="part-head"><h2></h2></div>
       <article class="sec">
         <ul class="appendix-list">
           <li><a href="#appendix-buses" style="color:inherit; text-decoration:none;">ملحق 1: الحافلات المدرسيّة</a></li>
